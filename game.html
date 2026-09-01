@@ -1,0 +1,877 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game On X Kulfiiz</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #07080d;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* NAVBAR */
+nav {
+    height: 75px;
+    background: rgba(7,8,13,0.95);
+    border-bottom: 1px solid #252832;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: Orbitron;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.logo span {
+    color: #8cff00;
+}
+
+.logo b {
+    color: white;
+    margin: 0 5px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #8cff00;
+}
+
+.cart {
+    background: #8cff00;
+    color: #07080d;
+    border: none;
+    padding: 10px 17px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    min-height: 650px;
+    padding: 80px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background:
+        radial-gradient(circle at 80% 50%, rgba(140,255,0,.12), transparent 35%),
+        #07080d;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.badge {
+    display: inline-block;
+    color: #8cff00;
+    border: 1px solid #48631f;
+    background: #11180b;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: Orbitron;
+    font-size: clamp(45px, 7vw, 85px);
+    line-height: 1;
+}
+
+.hero h1 span {
+    color: #8cff00;
+    text-shadow: 0 0 30px rgba(140,255,0,.35);
+}
+
+.hero p {
+    color: #aaa;
+    max-width: 570px;
+    line-height: 1.8;
+    margin: 25px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 14px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.green {
+    background: #8cff00;
+    color: #07080d;
+}
+
+.dark {
+    border: 1px solid #333;
+    color: white;
+}
+
+.hero-card {
+    width: 300px;
+    height: 360px;
+    border: 1px solid #343742;
+    border-radius: 25px;
+    background: linear-gradient(145deg,#181a23,#090a0f);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-5deg);
+    box-shadow: 0 0 70px rgba(140,255,0,.12);
+}
+
+.controller {
+    font-size: 100px;
+    filter: drop-shadow(0 0 20px #8cff00);
+}
+
+.hero-card h2 {
+    font-family: Orbitron;
+    font-size: 30px;
+}
+
+.hero-card h2 span {
+    color: #8cff00;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title small {
+    color: #8cff00;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.section-title h2 {
+    font-family: Orbitron;
+    font-size: 38px;
+    margin-top: 8px;
+}
+
+.section-title h2 span {
+    color: #8cff00;
+}
+
+/* PRODUCTS */
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.product {
+    background: linear-gradient(145deg,#12141c,#0b0c11);
+    border: 1px solid #252832;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .25s;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    border-color: #8cff00;
+    box-shadow: 0 15px 40px rgba(140,255,0,.08);
+}
+
+.product-img {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+    background: radial-gradient(circle,rgba(140,255,0,.12),transparent 65%);
+}
+
+.product-info {
+    padding: 17px;
+}
+
+.product-info small {
+    color: #8cff00;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.product-info h3 {
+    margin-top: 7px;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.price strong {
+    font-family: Orbitron;
+}
+
+.add {
+    background: #181a22;
+    border: 1px solid #343742;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.add:hover {
+    background: #8cff00;
+    color: black;
+}
+
+/* ABOUT */
+.about {
+    margin: 30px 8% 80px;
+    padding: 55px;
+    border: 1px solid #292c37;
+    border-radius: 20px;
+    background: radial-gradient(circle at 80%,rgba(140,255,0,.1),transparent 35%);
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.about h2 {
+    font-family: Orbitron;
+    font-size: 40px;
+}
+
+.about h2 span {
+    color: #8cff00;
+}
+
+.about p {
+    color: #aaa;
+    max-width: 500px;
+    line-height: 1.9;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid #252832;
+    text-align: center;
+    padding: 35px;
+    color: #777;
+}
+
+footer .logo {
+    margin-bottom: 10px;
+}
+
+/* CART */
+#cart {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 380px;
+    max-width: 90%;
+    height: 100vh;
+    background: #0d0f15;
+    border-left: 1px solid #333;
+    z-index: 200;
+    padding: 25px;
+    transition: .3s;
+}
+
+#cart.open {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.cart-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#cartItems {
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #222;
+}
+
+.checkout {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    padding: 15px;
+    background: #8cff00;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media(max-width:900px) {
+    .products {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .hero {
+        flex-direction: column;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .hero p {
+        margin: 25px auto;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    nav a {
+        display: none;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+}
+
+@media(max-width:550px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card {
+        width: 250px;
+        height: 300px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        GAME ON <b>X</b> <span>KULFIIZ</span>
+    </div>
+
+    <div>
+        <a href="#games">Games</a>
+        <a href="#food">Food</a>
+        <a href="#gear">Gear</a>
+    </div>
+
+    <button class="cart" onclick="openCart()">🛒 Cart <span id="count">0</span></button>
+</nav>
+
+
+<!-- HERO -->
+<div class="hero">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            ⚡ GAMING • FOOD • FLAVOURS
+        </div>
+
+        <h1>
+            PLAY HARD.<br>
+            <span>CHILL HARD.</span>
+        </h1>
+
+        <p>
+            Welcome to Game On X Kulfiiz.
+            Find your favourite PS5, PS4 and PC games,
+            upgrade your setup and finish your gaming session
+            with legendary kulfi and snacks.
+        </p>
+
+        <div class="buttons">
+            <a href="#games" class="btn green">
+                EXPLORE GAMES →
+            </a>
+
+            <a href="#food" class="btn dark">
+                SEE FLAVOURS
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+        <div class="controller">🎮</div>
+        <h2>GAME<br><span>ZONE</span></h2>
+    </div>
+
+</div>
+
+
+<!-- GAMES -->
+<section id="games">
+
+    <div class="section-title">
+        <small>CHOOSE YOUR LOADOUT</small>
+        <h2>Gaming <span>Hub</span></h2>
+    </div>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="product-img">🕷️</div>
+            <div class="product-info">
+                <small>PS5</small>
+                <h3>Spider-Man 2</h3>
+                <div class="price">
+                    <strong>₹3,499</strong>
+                    <button class="add" onclick="add('Spider-Man 2',3499)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">⚽</div>
+            <div class="product-info">
+                <small>PS5</small>
+                <h3>FC 26</h3>
+                <div class="price">
+                    <strong>₹3,999</strong>
+                    <button class="add" onclick="add('FC 26',3999)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">⚔️</div>
+            <div class="product-info">
+                <small>PS4 / PS5</small>
+                <h3>God of War</h3>
+                <div class="price">
+                    <strong>₹2,999</strong>
+                    <button class="add" onclick="add('God of War',2999)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🚗</div>
+            <div class="product-info">
+                <small>PC</small>
+                <h3>GTA V</h3>
+                <div class="price">
+                    <strong>₹1,499</strong>
+                    <button class="add" onclick="add('GTA V',1499)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">⛏️</div>
+            <div class="product-info">
+                <small>PC</small>
+                <h3>Minecraft</h3>
+                <div class="price">
+                    <strong>₹999</strong>
+                    <button class="add" onclick="add('Minecraft',999)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🏎️</div>
+            <div class="product-info">
+                <small>PS5</small>
+                <h3>Gran Turismo 7</h3>
+                <div class="price">
+                    <strong>₹3,499</strong>
+                    <button class="add" onclick="add('Gran Turismo 7',3499)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🌿</div>
+            <div class="product-info">
+                <small>PS4</small>
+                <h3>The Last of Us</h3>
+                <div class="price">
+                    <strong>₹2,499</strong>
+                    <button class="add" onclick="add('The Last of Us',2499)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🌃</div>
+            <div class="product-info">
+                <small>PC</small>
+                <h3>Cyberpunk 2077</h3>
+                <div class="price">
+                    <strong>₹1,999</strong>
+                    <button class="add" onclick="add('Cyberpunk 2077',1999)">+</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOD -->
+<section id="food">
+
+    <div class="section-title">
+        <small>COOL DOWN AFTER THE MATCH</small>
+        <h2>Food & <span>Flavours</span></h2>
+    </div>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="product-img">🍦</div>
+            <div class="product-info">
+                <small>SIGNATURE</small>
+                <h3>Kesar Pista Kulfi</h3>
+                <div class="price">
+                    <strong>₹99</strong>
+                    <button class="add" onclick="add('Kesar Pista Kulfi',99)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🥭</div>
+            <div class="product-info">
+                <small>SUMMER FAV</small>
+                <h3>Mango Kulfi</h3>
+                <div class="price">
+                    <strong>₹89</strong>
+                    <button class="add" onclick="add('Mango Kulfi',89)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🍫</div>
+            <div class="product-info">
+                <small>CHOCOLATE</small>
+                <h3>Chocolate Kulfi</h3>
+                <div class="price">
+                    <strong>₹99</strong>
+                    <button class="add" onclick="add('Chocolate Kulfi',99)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🍟</div>
+            <div class="product-info">
+                <small>SNACKS</small>
+                <h3>Masala Fries</h3>
+                <div class="price">
+                    <strong>₹129</strong>
+                    <button class="add" onclick="add('Masala Fries',129)">+</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- GEAR -->
+<section id="gear">
+
+    <div class="section-title">
+        <small>UPGRADE YOUR STATION</small>
+        <h2>Gaming <span>Gear</span></h2>
+    </div>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="product-img">🎮</div>
+            <div class="product-info">
+                <small>CONSOLE</small>
+                <h3>PS5 Console</h3>
+                <div class="price">
+                    <strong>₹49,999</strong>
+                    <button class="add" onclick="add('PS5 Console',49999)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🎮</div>
+            <div class="product-info">
+                <small>CONSOLE</small>
+                <h3>PS4 Console</h3>
+                <div class="price">
+                    <strong>₹29,999</strong>
+                    <button class="add" onclick="add('PS4 Console',29999)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">🎧</div>
+            <div class="product-info">
+                <small>AUDIO</small>
+                <h3>Gaming Headset</h3>
+                <div class="price">
+                    <strong>₹2,499</strong>
+                    <button class="add" onclick="add('Gaming Headset',2499)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="product-img">⌨️</div>
+            <div class="product-info">
+                <small>PC GEAR</small>
+                <h3>RGB Gaming Keyboard</h3>
+                <div class="price">
+                    <strong>₹1,999</strong>
+                    <button class="add" onclick="add('RGB Gaming Keyboard',1999)">+</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<div class="about">
+
+    <div>
+        <small style="color:#8cff00;letter-spacing:2px;">
+            WHY GAME ON X KULFIIZ?
+        </small>
+
+        <h2>
+            ONE SHOP.<br>
+            <span>TWO WORLDS.</span>
+        </h2>
+    </div>
+
+    <p>
+        Whether you're hunting for your next game,
+        upgrading your setup or looking for the perfect
+        kulfi after a gaming session, Game On X Kulfiiz
+        brings gaming and food together in one place.
+        🎮 🍦
+    </p>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="logo">
+        GAME ON <b>X</b> <span>KULFIIZ</span>
+    </div>
+
+    <p>Games • Gear • Kulfi • Good vibes</p>
+
+    <small>© 2026 Game On X Kulfiiz</small>
+
+</footer>
+
+
+<!-- CART -->
+<div id="cart">
+
+    <div class="cart-header">
+        <h3>YOUR CART 🛒</h3>
+        <button onclick="closeCart()">✕</button>
+    </div>
+
+    <div id="cartItems">
+        <p style="color:#777;margin-top:30px;">
+            Your cart is empty 👀
+        </p>
+    </div>
+
+    <button class="checkout" onclick="checkout()">
+        CHECKOUT
+    </button>
+
+</div>
+
+
+<script>
+
+let cart = [];
+
+function add(name, price) {
+
+    cart.push({
+        name: name,
+        price: price
+    });
+
+    updateCart();
+
+    document.getElementById("cart").classList.add("open");
+}
+
+function updateCart() {
+
+    document.getElementById("count").innerText = cart.length;
+
+    let items = document.getElementById("cartItems");
+
+    if(cart.length === 0) {
+
+        items.innerHTML =
+        '<p style="color:#777;margin-top:30px;">Your cart is empty 👀</p>';
+
+        return;
+    }
+
+    items.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((item,index) => {
+
+        total += item.price;
+
+        items.innerHTML += `
+            <div class="cart-item">
+                <div>
+                    <b>${item.name}</b>
+                    <br>
+                    <small style="color:#777">
+                        ₹${item.price.toLocaleString("en-IN")}
+                    </small>
+                </div>
+
+                <button
+                onclick="removeItem(${index})"
+                style="background:none;border:none;color:#ff5555;cursor:pointer;">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    items.innerHTML += `
+        <div style="
+            margin-top:25px;
+            display:flex;
+            justify-content:space-between;
+            font-family:Orbitron;">
+            <b>TOTAL</b>
+            <b>₹${total.toLocaleString("en-IN")}</b>
+        </div>
+    `;
+}
+
+function removeItem(index) {
+
+    cart.splice(index,1);
+
+    updateCart();
+}
+
+function openCart() {
+
+    document.getElementById("cart").classList.add("open");
+
+}
+
+function closeCart() {
+
+    document.getElementById("cart").classList.remove("open");
+
+}
+
+function checkout() {
+
+    if(cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+    } else {
+
+        alert(
+            "🔥 Checkout demo!\n\n" +
+            "Your order has been prepared.\n" +
+            "Connect this button to your real ordering/payment system."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
